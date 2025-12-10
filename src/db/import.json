@@ -1,0 +1,144 @@
+[
+    {
+        "id": "js-basics-001",
+        "title": "JavaScript Basics",
+        "content": "Intro to variables, data types, operators, and control flow.",
+        "color": "#ffcc00",
+        "links": [
+            "js-dom-002",
+            "js-functions-003",
+            "js-async-004"
+        ],
+        "tags": [
+            "beginner",
+            "foundations"
+        ],
+        "alias": "JS Basics"
+    },
+    {
+        "id": "js-dom-002",
+        "title": "DOM Manipulation",
+        "content": "Selecting elements, modifying styles, handling events, and updating the UI dynamically.",
+        "color": "#0099ff",
+        "links": [
+            "js-basics-001",
+            "js-events-005",
+            "js-frameworks-006"
+        ],
+        "tags": [
+            "browser",
+            "ui"
+        ],
+        "alias": "DOM"
+    },
+    {
+        "id": "js-functions-003",
+        "title": "Functions & Scope",
+        "content": "Understanding function declarations, expressions, arrow functions, closures, and lexical scope.",
+        "color": "#33cc33",
+        "links": [
+            "js-basics-001",
+            "js-async-004",
+            "js-oop-007"
+        ],
+        "tags": [
+            "core",
+            "intermediate"
+        ],
+        "alias": "Functions"
+    },
+    {
+        "id": "js-async-004",
+        "title": "Asynchronous JavaScript",
+        "content": "Callbacks, promises, async/await, and the event loop explained.",
+        "color": "#ff6600",
+        "links": [
+            "js-basics-001",
+            "js-functions-003",
+            "js-events-005",
+            "js-api-008"
+        ],
+        "tags": [
+            "async",
+            "intermediate"
+        ],
+        "alias": "Async JS"
+    },
+    {
+        "id": "js-events-005",
+        "title": "Event Handling",
+        "content": "Understanding event propagation, listeners, and custom events.",
+        "color": "#cc00ff",
+        "links": [
+            "js-dom-002",
+            "js-async-004"
+        ],
+        "tags": [
+            "browser",
+            "events"
+        ],
+        "alias": "Events"
+    },
+    {
+        "id": "js-frameworks-006",
+        "title": "JavaScript Frameworks Overview",
+        "content": "Understanding how frameworks like React, Vue, and Angular build on DOM and component patterns.",
+        "color": "#ff3399",
+        "links": [
+            "js-dom-002",
+            "js-api-008",
+            "js-react-009"
+        ],
+        "tags": [
+            "frameworks"
+        ],
+        "alias": "Frameworks"
+    },
+    {
+        "id": "js-oop-007",
+        "title": "JavaScript OOP",
+        "content": "Classes, prototypes, inheritance, and object design patterns.",
+        "color": "#6666ff",
+        "links": [
+            "js-functions-003",
+            "js-api-008"
+        ],
+        "tags": [
+            "oop",
+            "intermediate"
+        ],
+        "alias": "OOP"
+    },
+    {
+        "id": "js-api-008",
+        "title": "Browser APIs",
+        "content": "Using Fetch API, Storage API, Clipboard, Canvas, and other native web APIs.",
+        "color": "#ff4444",
+        "links": [
+            "js-async-004",
+            "js-frameworks-006",
+            "js-oop-007"
+        ],
+        "tags": [
+            "api",
+            "browser"
+        ],
+        "alias": "Browser APIs"
+    },
+    {
+        "id": "js-react-009",
+        "title": "React Essentials",
+        "content": "JSX, components, hooks, state, events, and effects.",
+        "color": "#00d8ff",
+        "links": [
+            "js-frameworks-006",
+            "js-api-008",
+            "js-async-004"
+        ],
+        "tags": [
+            "react",
+            "frontend"
+        ],
+        "alias": "React"
+    }
+]

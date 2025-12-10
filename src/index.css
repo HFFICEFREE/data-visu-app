@@ -1,0 +1,51 @@
+@import './styles/variables.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  overflow: hidden;
+  /* App-like feel */
+  width: 100vw;
+  height: 100vh;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: var(--surface-color);
+  color: var(--text-color);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: filter 0.2s;
+}
+
+button:hover {
+  filter: brightness(1.2);
+}
+
+input,
+textarea {
+  background: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--surface-border);
+  padding: 8px;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}

@@ -1,0 +1,9 @@
+:root {
+  --bg-color: #050510;
+  --text-color: #e0e0e0;
+  --primary-color: #00d4ff;
+  --secondary-color: #ff0055;
+  --surface-color: #1a1a2e;
+  --surface-border: #303050;
+  --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
