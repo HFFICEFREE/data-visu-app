@@ -1,144 +1,628 @@
 [
     {
-        "id": "js-basics-001",
-        "title": "JavaScript Basics",
-        "content": "Intro to variables, data types, operators, and control flow.",
+        "id": "js-0001",
+        "title": "JavaScript Overview",
+        "content": "High-level overview of language characteristics.",
+        "color": "#ffaa00",
+        "links": [
+            "js-0002",
+            "js-0003",
+            "js-0010"
+        ],
+        "tags": [
+            "core"
+        ],
+        "alias": "JS Overview"
+    },
+    {
+        "id": "js-0002",
+        "title": "Variables (let, const, var)",
+        "content": "Declaration forms and differences.",
         "color": "#ffcc00",
         "links": [
-            "js-dom-002",
-            "js-functions-003",
-            "js-async-004"
+            "js-0004",
+            "js-0005",
+            "js-0006"
         ],
         "tags": [
-            "beginner",
-            "foundations"
+            "core"
         ],
-        "alias": "JS Basics"
+        "alias": "Variables"
     },
     {
-        "id": "js-dom-002",
-        "title": "DOM Manipulation",
-        "content": "Selecting elements, modifying styles, handling events, and updating the UI dynamically.",
-        "color": "#0099ff",
+        "id": "js-0003",
+        "title": "Data Types",
+        "content": "Primitive and reference types.",
+        "color": "#ffcc55",
         "links": [
-            "js-basics-001",
-            "js-events-005",
-            "js-frameworks-006"
+            "js-0007",
+            "js-0008"
         ],
         "tags": [
-            "browser",
-            "ui"
+            "core"
         ],
-        "alias": "DOM"
+        "alias": "Types"
     },
     {
-        "id": "js-functions-003",
-        "title": "Functions & Scope",
-        "content": "Understanding function declarations, expressions, arrow functions, closures, and lexical scope.",
-        "color": "#33cc33",
+        "id": "js-0004",
+        "title": "var vs let vs const",
+        "content": "Scoping and reassign rules.",
+        "color": "#ffdd88",
         "links": [
-            "js-basics-001",
-            "js-async-004",
-            "js-oop-007"
+            "js-0005"
         ],
         "tags": [
-            "core",
-            "intermediate"
+            "core"
+        ],
+        "alias": "var/let/const"
+    },
+    {
+        "id": "js-0005",
+        "title": "Block Scope",
+        "content": "Variables visible only inside {}.",
+        "color": "#ffeeaa",
+        "links": [
+            "js-0006"
+        ],
+        "tags": [
+            "core"
+        ],
+        "alias": "Block Scope"
+    },
+    {
+        "id": "js-0006",
+        "title": "Hoisting",
+        "content": "Declarations are moved to top of scope.",
+        "color": "#ffee66",
+        "links": [
+            "js-0020"
+        ],
+        "tags": [
+            "core"
+        ],
+        "alias": "Hoisting"
+    },
+    {
+        "id": "js-0007",
+        "title": "Primitive Types",
+        "content": "string, number, boolean, null, undefined, symbol, bigint.",
+        "color": "#ccff66",
+        "links": [
+            "js-0008"
+        ],
+        "tags": [
+            "core"
+        ],
+        "alias": "Primitives"
+    },
+    {
+        "id": "js-0008",
+        "title": "Reference Types",
+        "content": "Objects, arrays, functions.",
+        "color": "#bbff55",
+        "links": [
+            "js-0030",
+            "js-0031"
+        ],
+        "tags": [
+            "core"
+        ],
+        "alias": "Reference Types"
+    },
+    {
+        "id": "js-0010",
+        "title": "Expressions vs Statements",
+        "content": "JS code categories.",
+        "color": "#ffaa55",
+        "links": [
+            "js-0020"
+        ],
+        "tags": [
+            "core"
+        ],
+        "alias": "Expr vs Stmt"
+    },
+    {
+        "id": "js-0020",
+        "title": "Type Coercion",
+        "content": "Implicit and explicit conversions.",
+        "color": "#ff8888",
+        "links": [
+            "js-0021",
+            "js-0022",
+            "js-0023"
+        ],
+        "tags": [
+            "coercion"
+        ],
+        "alias": "Coercion"
+    },
+    {
+        "id": "js-0021",
+        "title": "Truthiness",
+        "content": "Truthy vs falsy values.",
+        "color": "#ff9999",
+        "links": [
+            "js-0022"
+        ],
+        "tags": [
+            "coercion"
+        ],
+        "alias": "Truthiness"
+    },
+    {
+        "id": "js-0022",
+        "title": "Equality Operators",
+        "content": "== vs === under the hood.",
+        "color": "#ff7777",
+        "links": [
+            "js-0020"
+        ],
+        "tags": [
+            "coercion"
+        ],
+        "alias": "== vs ==="
+    },
+    {
+        "id": "js-0023",
+        "title": "Type Casting Functions",
+        "content": "String(), Number(), Boolean().",
+        "color": "#ff6666",
+        "links": [],
+        "tags": [
+            "core"
+        ],
+        "alias": "Casting Functions"
+    },
+    {
+        "id": "js-0030",
+        "title": "Functions",
+        "content": "Function declarations, expressions, arrow functions.",
+        "color": "#66ccff",
+        "links": [
+            "js-0031",
+            "js-0032",
+            "js-0033"
+        ],
+        "tags": [
+            "functions"
         ],
         "alias": "Functions"
     },
     {
-        "id": "js-async-004",
-        "title": "Asynchronous JavaScript",
-        "content": "Callbacks, promises, async/await, and the event loop explained.",
-        "color": "#ff6600",
+        "id": "js-0031",
+        "title": "Arrow Functions",
+        "content": "Lexical this and short syntax.",
+        "color": "#55bbff",
         "links": [
-            "js-basics-001",
-            "js-functions-003",
-            "js-events-005",
-            "js-api-008"
+            "js-0030",
+            "js-0040"
         ],
         "tags": [
-            "async",
-            "intermediate"
+            "functions"
         ],
-        "alias": "Async JS"
+        "alias": "Arrow Functions"
     },
     {
-        "id": "js-events-005",
-        "title": "Event Handling",
-        "content": "Understanding event propagation, listeners, and custom events.",
-        "color": "#cc00ff",
+        "id": "js-0032",
+        "title": "Closures",
+        "content": "Function retains access to outer scope.",
+        "color": "#66ddff",
         "links": [
-            "js-dom-002",
-            "js-async-004"
+            "js-0033",
+            "js-0040"
         ],
         "tags": [
-            "browser",
-            "events"
+            "functions"
+        ],
+        "alias": "Closures"
+    },
+    {
+        "id": "js-0033",
+        "title": "IIFE",
+        "content": "Immediately-invoked function expressions.",
+        "color": "#55ccff",
+        "links": [
+            "js-0032"
+        ],
+        "tags": [
+            "functions"
+        ],
+        "alias": "IIFE"
+    },
+    {
+        "id": "js-0040",
+        "title": "this Binding",
+        "content": "How this changes in functions.",
+        "color": "#6699ff",
+        "links": [
+            "js-0031",
+            "js-0050"
+        ],
+        "tags": [
+            "functions"
+        ],
+        "alias": "this"
+    },
+    {
+        "id": "js-0050",
+        "title": "Objects",
+        "content": "Key-value structures and manipulation.",
+        "color": "#88ff88",
+        "links": [
+            "js-0051",
+            "js-0052",
+            "js-0060"
+        ],
+        "tags": [
+            "objects"
+        ],
+        "alias": "Objects"
+    },
+    {
+        "id": "js-0051",
+        "title": "Prototype Chain",
+        "content": "How inheritance works under the hood.",
+        "color": "#77ee77",
+        "links": [
+            "js-0052"
+        ],
+        "tags": [
+            "objects"
+        ],
+        "alias": "Prototype Chain"
+    },
+    {
+        "id": "js-0052",
+        "title": "Classes (ES6)",
+        "content": "Syntax sugar over prototypes.",
+        "color": "#66dd66",
+        "links": [
+            "js-0051"
+        ],
+        "tags": [
+            "objects"
+        ],
+        "alias": "Classes"
+    },
+    {
+        "id": "js-0060",
+        "title": "Destructuring",
+        "content": "Extracting values from arrays/objects.",
+        "color": "#99ff99",
+        "links": [
+            "js-0061"
+        ],
+        "tags": [
+            "syntax"
+        ],
+        "alias": "Destructuring"
+    },
+    {
+        "id": "js-0061",
+        "title": "Spread & Rest",
+        "content": "...args and spreading collections.",
+        "color": "#99ee99",
+        "links": [
+            "js-0060"
+        ],
+        "tags": [
+            "syntax"
+        ],
+        "alias": "Spread/Rest"
+    },
+    {
+        "id": "js-0070",
+        "title": "Arrays",
+        "content": "Mutable ordered lists.",
+        "color": "#66ffaa",
+        "links": [
+            "js-0071",
+            "js-0072",
+            "js-0073"
+        ],
+        "tags": [
+            "arrays"
+        ],
+        "alias": "Arrays"
+    },
+    {
+        "id": "js-0071",
+        "title": "Array Iteration",
+        "content": "forEach, map, filter, reduce.",
+        "color": "#55eeaa",
+        "links": [
+            "js-0072"
+        ],
+        "tags": [
+            "arrays"
+        ],
+        "alias": "Array Methods"
+    },
+    {
+        "id": "js-0072",
+        "title": "Array Mutability",
+        "content": "push, pop, splice vs immutable methods.",
+        "color": "#44ddaa",
+        "links": [
+            "js-0071"
+        ],
+        "tags": [
+            "arrays"
+        ],
+        "alias": "Mutability"
+    },
+    {
+        "id": "js-0073",
+        "title": "Typed Arrays",
+        "content": "Binary array formats for performance.",
+        "color": "#55ddaa",
+        "links": [],
+        "tags": [
+            "arrays"
+        ],
+        "alias": "Typed Arrays"
+    },
+    {
+        "id": "js-0080",
+        "title": "Asynchronous JavaScript",
+        "content": "JS concurrency model.",
+        "color": "#ff8844",
+        "links": [
+            "js-0081",
+            "js-0082",
+            "js-0083"
+        ],
+        "tags": [
+            "async"
+        ],
+        "alias": "Async"
+    },
+    {
+        "id": "js-0081",
+        "title": "Callbacks",
+        "content": "Traditional async model.",
+        "color": "#ff7744",
+        "links": [
+            "js-0082"
+        ],
+        "tags": [
+            "async"
+        ],
+        "alias": "Callbacks"
+    },
+    {
+        "id": "js-0082",
+        "title": "Promises",
+        "content": "Thenable pattern for async flows.",
+        "color": "#ff6633",
+        "links": [
+            "js-0083"
+        ],
+        "tags": [
+            "async"
+        ],
+        "alias": "Promises"
+    },
+    {
+        "id": "js-0083",
+        "title": "async/await",
+        "content": "Syntactic sugar for promises.",
+        "color": "#ff5522",
+        "links": [
+            "js-0082",
+            "js-0090"
+        ],
+        "tags": [
+            "async"
+        ],
+        "alias": "async/await"
+    },
+    {
+        "id": "js-0090",
+        "title": "Event Loop",
+        "content": "Call stack, microtasks, macrotasks.",
+        "color": "#ff4400",
+        "links": [
+            "js-0080"
+        ],
+        "tags": [
+            "async"
+        ],
+        "alias": "Event Loop"
+    },
+    {
+        "id": "js-0100",
+        "title": "DOM",
+        "content": "Document tree for web pages.",
+        "color": "#00ddff",
+        "links": [
+            "js-0101",
+            "js-0102",
+            "js-0103"
+        ],
+        "tags": [
+            "browser"
+        ],
+        "alias": "DOM"
+    },
+    {
+        "id": "js-0101",
+        "title": "DOM Selection",
+        "content": "querySelector, getElementById.",
+        "color": "#00ccff",
+        "links": [
+            "js-0102"
+        ],
+        "tags": [
+            "browser"
+        ],
+        "alias": "DOM Selection"
+    },
+    {
+        "id": "js-0102",
+        "title": "DOM Manipulation",
+        "content": "Changing attributes, classes, text, styles.",
+        "color": "#00bbff",
+        "links": [
+            "js-0103"
+        ],
+        "tags": [
+            "browser"
+        ],
+        "alias": "DOM Manip"
+    },
+    {
+        "id": "js-0103",
+        "title": "Event Handling",
+        "content": "addEventListener, propagation.",
+        "color": "#00aaff",
+        "links": [
+            "js-0090"
+        ],
+        "tags": [
+            "browser"
         ],
         "alias": "Events"
     },
     {
-        "id": "js-frameworks-006",
-        "title": "JavaScript Frameworks Overview",
-        "content": "Understanding how frameworks like React, Vue, and Angular build on DOM and component patterns.",
-        "color": "#ff3399",
+        "id": "js-0110",
+        "title": "Fetch API",
+        "content": "HTTP requests in browser.",
+        "color": "#33ccff",
         "links": [
-            "js-dom-002",
-            "js-api-008",
-            "js-react-009"
+            "js-0083"
         ],
         "tags": [
-            "frameworks"
+            "browser",
+            "async"
         ],
-        "alias": "Frameworks"
+        "alias": "Fetch"
     },
     {
-        "id": "js-oop-007",
-        "title": "JavaScript OOP",
-        "content": "Classes, prototypes, inheritance, and object design patterns.",
-        "color": "#6666ff",
+        "id": "js-0111",
+        "title": "CORS",
+        "content": "Security rules for cross-origin requests.",
+        "color": "#22bbff",
         "links": [
-            "js-functions-003",
-            "js-api-008"
+            "js-0110"
         ],
         "tags": [
-            "oop",
-            "intermediate"
-        ],
-        "alias": "OOP"
-    },
-    {
-        "id": "js-api-008",
-        "title": "Browser APIs",
-        "content": "Using Fetch API, Storage API, Clipboard, Canvas, and other native web APIs.",
-        "color": "#ff4444",
-        "links": [
-            "js-async-004",
-            "js-frameworks-006",
-            "js-oop-007"
-        ],
-        "tags": [
-            "api",
             "browser"
         ],
-        "alias": "Browser APIs"
+        "alias": "CORS"
     },
     {
-        "id": "js-react-009",
-        "title": "React Essentials",
-        "content": "JSX, components, hooks, state, events, and effects.",
-        "color": "#00d8ff",
+        "id": "js-0120",
+        "title": "LocalStorage & SessionStorage",
+        "content": "Persistent browser data APIs.",
+        "color": "#11aaff",
+        "links": [],
+        "tags": [
+            "browser"
+        ],
+        "alias": "Storage"
+    },
+    {
+        "id": "js-0130",
+        "title": "ES Modules",
+        "content": "import/export syntax.",
+        "color": "#bbbbff",
         "links": [
-            "js-frameworks-006",
-            "js-api-008",
-            "js-async-004"
+            "js-0131"
         ],
         "tags": [
-            "react",
-            "frontend"
+            "modules"
         ],
-        "alias": "React"
+        "alias": "ESM"
+    },
+    {
+        "id": "js-0131",
+        "title": "CommonJS",
+        "content": "require/module.exports.",
+        "color": "#aaaaff",
+        "links": [
+            "js-0150"
+        ],
+        "tags": [
+            "modules"
+        ],
+        "alias": "CommonJS"
+    },
+    {
+        "id": "js-0150",
+        "title": "Bundlers (Vite, Webpack)",
+        "content": "Tools for packaging modules.",
+        "color": "#9999ff",
+        "links": [
+            "js-0130"
+        ],
+        "tags": [
+            "build"
+        ],
+        "alias": "Bundlers"
+    },
+    {
+        "id": "js-0160",
+        "title": "Generators",
+        "content": "function* and yield for lazy evaluation.",
+        "color": "#ff99bb",
+        "links": [
+            "js-0082"
+        ],
+        "tags": [
+            "advanced"
+        ],
+        "alias": "Generators"
+    },
+    {
+        "id": "js-0161",
+        "title": "Iterators",
+        "content": "Symbol.iterator and iteration protocols.",
+        "color": "#ff88aa",
+        "links": [
+            "js-0160"
+        ],
+        "tags": [
+            "advanced"
+        ],
+        "alias": "Iterators"
+    },
+    {
+        "id": "js-0170",
+        "title": "WeakMap & WeakSet",
+        "content": "Memory-managed reference collections.",
+        "color": "#ff77aa",
+        "links": [],
+        "tags": [
+            "advanced"
+        ],
+        "alias": "WeakMap/WeakSet"
+    },
+    {
+        "id": "js-0180",
+        "title": "Regular Expressions",
+        "content": "Pattern matching in strings.",
+        "color": "#ff66aa",
+        "links": [
+            "js-0181"
+        ],
+        "tags": [
+            "regex"
+        ],
+        "alias": "Regex"
+    },
+    {
+        "id": "js-0181",
+        "title": "Regex Lookaheads & Lookbehinds",
+        "content": "Advanced regex features.",
+        "color": "#ff5599",
+        "links": [
+            "js-0180"
+        ],
+        "tags": [
+            "regex"
+        ],
+        "alias": "Lookaheads/Lookbehinds"
     }
 ]
