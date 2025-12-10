@@ -127,110 +127,116 @@ export function NoteEditor() {
         }));
     };
 
-    if (loading) return <div className={styles.container}>Loading...</div>;
+    if (loading) return (
+        <div className={styles.scrollContainer}>
+            <div className={styles.contentWrapper}>Loading...</div>
+        </div>
+    );
 
     return (
-        <div className={styles.container}>
-            <div className={styles.toolbar}>
-                <button onClick={() => navigate(-1)}>Back</button>
-                <div className={styles.spacer} />
-                <button onClick={() => setIsPreview(!isPreview)}>
-                    {isPreview ? 'Edit' : 'Preview'}
-                </button>
-                <button className={styles.saveBtn} onClick={handleSave}>Save</button>
-                {id && id !== 'new' && (
-                    <button className={styles.deleteBtn} onClick={handleDelete}>Delete</button>
-                )}
-            </div>
+        <div className={styles.scrollContainer}>
+            <div className={styles.contentWrapper}>
+                <div className={styles.toolbar}>
+                    <button onClick={() => navigate(-1)}>Back</button>
+                    <div className={styles.spacer} />
+                    <button onClick={() => setIsPreview(!isPreview)}>
+                        {isPreview ? 'Edit' : 'Preview'}
+                    </button>
+                    <button className={styles.saveBtn} onClick={handleSave}>Save</button>
+                    {id && id !== 'new' && (
+                        <button className={styles.deleteBtn} onClick={handleDelete}>Delete</button>
+                    )}
+                </div>
 
-            <div className={styles.metaRow}>
-                <input
-                    className={styles.titleInput}
-                    placeholder="Note Title"
-                    value={note.title}
-                    onChange={e => setNote({ ...note, title: e.target.value })}
-                />
-                <input
-                    type="color"
-                    className={styles.colorInput}
-                    value={note.color}
-                    onChange={e => setNote({ ...note, color: e.target.value })}
-                    title="Note Color"
-                />
-            </div>
+                <div className={styles.metaRow}>
+                    <input
+                        className={styles.titleInput}
+                        placeholder="Note Title"
+                        value={note.title}
+                        onChange={e => setNote({ ...note, title: e.target.value })}
+                    />
+                    <input
+                        type="color"
+                        className={styles.colorInput}
+                        value={note.color}
+                        onChange={e => setNote({ ...note, color: e.target.value })}
+                        title="Note Color"
+                    />
+                </div>
 
-            <div className={styles.metaRow}>
-                <span className={styles.label}>ID:</span>
-                <input
-                    className={styles.aliasInput}
-                    placeholder="Unique Connection Name"
-                    value={note.alias || ''}
-                    onChange={e => setNote({ ...note, alias: e.target.value })}
-                />
-            </div>
+                <div className={styles.metaRow}>
+                    <span className={styles.label}>ID:</span>
+                    <input
+                        className={styles.aliasInput}
+                        placeholder="Unique Connection Name"
+                        value={note.alias || ''}
+                        onChange={e => setNote({ ...note, alias: e.target.value })}
+                    />
+                </div>
 
-            <div className={styles.metaRow}>
-                {/* Tags Section */}
-                <div className={styles.tagSection}>
-                    <div className={styles.tagList}>
-                        {(note.tags || []).map(tag => (
-                            <span key={tag} className={styles.tagChip}>
-                                {tag}
-                                <button onClick={() => removeTag(tag)} className={styles.tagRemove}>×</button>
-                            </span>
-                        ))}
-                        <input
-                            className={styles.tagInput}
-                            placeholder="+ Tag"
-                            value={tagInput}
-                            onChange={e => setTagInput(e.target.value)}
-                            onKeyDown={handleAddTag}
-                        />
+                <div className={styles.metaRow}>
+                    {/* Tags Section */}
+                    <div className={styles.tagSection}>
+                        <div className={styles.tagList}>
+                            {(note.tags || []).map(tag => (
+                                <span key={tag} className={styles.tagChip}>
+                                    {tag}
+                                    <button onClick={() => removeTag(tag)} className={styles.tagRemove}>×</button>
+                                </span>
+                            ))}
+                            <input
+                                className={styles.tagInput}
+                                placeholder="+ Tag"
+                                value={tagInput}
+                                onChange={e => setTagInput(e.target.value)}
+                                onKeyDown={handleAddTag}
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div className={styles.editorArea}>
-                {isPreview ? (
-                    <div className={styles.preview} style={{ borderColor: note.color }}>
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                            {note.content}
-                        </ReactMarkdown>
+                <div className={styles.editorArea}>
+                    {isPreview ? (
+                        <div className={styles.preview} style={{ borderColor: note.color }}>
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                {note.content}
+                            </ReactMarkdown>
+                        </div>
+                    ) : (
+                        <textarea
+                            className={styles.textarea}
+                            placeholder="Write your note in Markdown..."
+                            value={note.content}
+                            onChange={e => setNote({ ...note, content: e.target.value })}
+                        />
+                    )}
+                </div>
+
+                <div className={styles.connections}>
+                    <h3>Connections</h3>
+                    <div className={styles.linkList}>
+                        {allNotes
+                            .filter(n => n.id !== note.id)
+                            .map(n => {
+                                const baseName = n.alias || n.title || 'Untitled';
+                                const isDuplicate = allNotes.filter(
+                                    x => x.id !== note.id && (x.alias || x.title || 'Untitled') === baseName
+                                ).length > 1;
+
+                                const displayName = isDuplicate ? `${baseName} (${n.id.substring(0, 4)})` : baseName;
+
+                                return (
+                                    <div
+                                        key={n.id}
+                                        className={`${styles.linkChip} ${note.links?.includes(n.id) ? styles.linkActive : ''}`}
+                                        onClick={() => toggleLink(n.id)}
+                                        style={{ borderColor: n.color }}
+                                    >
+                                        {displayName}
+                                    </div>
+                                )
+                            })}
                     </div>
-                ) : (
-                    <textarea
-                        className={styles.textarea}
-                        placeholder="Write your note in Markdown..."
-                        value={note.content}
-                        onChange={e => setNote({ ...note, content: e.target.value })}
-                    />
-                )}
-            </div>
-
-            <div className={styles.connections}>
-                <h3>Connections</h3>
-                <div className={styles.linkList}>
-                    {allNotes
-                        .filter(n => n.id !== note.id)
-                        .map(n => {
-                            const baseName = n.alias || n.title || 'Untitled';
-                            const isDuplicate = allNotes.filter(
-                                x => x.id !== note.id && (x.alias || x.title || 'Untitled') === baseName
-                            ).length > 1;
-
-                            const displayName = isDuplicate ? `${baseName} (${n.id.substring(0, 4)})` : baseName;
-
-                            return (
-                                <div
-                                    key={n.id}
-                                    className={`${styles.linkChip} ${note.links?.includes(n.id) ? styles.linkActive : ''}`}
-                                    onClick={() => toggleLink(n.id)}
-                                    style={{ borderColor: n.color }}
-                                >
-                                    {displayName}
-                                </div>
-                            )
-                        })}
                 </div>
             </div>
         </div>

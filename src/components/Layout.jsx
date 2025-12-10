@@ -1,11 +1,14 @@
 import { useRef } from 'react';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { getNotes, saveNote } from '../db/db';
 import styles from './Layout.module.css';
 
 export function Layout() {
     const fileInputRef = useRef(null);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const isNoteView = location.pathname.startsWith('/note/');
 
     const handleExport = async () => {
         const notes = await getNotes();
@@ -71,26 +74,28 @@ export function Layout() {
                 <Outlet />
             </main>
 
-            <nav className={styles.dock}>
-                <NavLink
-                    to="/"
-                    className={({ isActive }) => `${styles.navItem} ${isActive ? styles.active : ''}`}
-                >
-                    Graph 3D
-                </NavLink>
-                <NavLink
-                    to="/timeline"
-                    className={({ isActive }) => `${styles.navItem} ${isActive ? styles.active : ''}`}
-                >
-                    Timeline
-                </NavLink>
-                <NavLink
-                    to="/note/new"
-                    className={({ isActive }) => `${styles.navItem} ${isActive ? styles.active : ''}`}
-                >
-                    New Note
-                </NavLink>
-            </nav>
+            {!isNoteView && (
+                <nav className={styles.dock}>
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) => `${styles.navItem} ${isActive ? styles.active : ''}`}
+                    >
+                        Graph 3D
+                    </NavLink>
+                    <NavLink
+                        to="/timeline"
+                        className={({ isActive }) => `${styles.navItem} ${isActive ? styles.active : ''}`}
+                    >
+                        Timeline
+                    </NavLink>
+                    <NavLink
+                        to="/note/new"
+                        className={({ isActive }) => `${styles.navItem} ${isActive ? styles.active : ''}`}
+                    >
+                        New Note
+                    </NavLink>
+                </nav>
+            )}
         </div>
     );
 }
