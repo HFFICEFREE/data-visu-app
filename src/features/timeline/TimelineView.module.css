@@ -99,7 +99,6 @@
     content: '';
     position: absolute;
     left: 20px;
-    /* Adjust based on design */
     top: 0;
     bottom: 0;
     width: 2px;
@@ -119,7 +118,9 @@
     position: relative;
     z-index: 1;
     margin-left: 40px;
-    /* Space for line */
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 .selectedCard {
@@ -202,12 +203,24 @@
     font-size: 0.8rem;
     padding: 6px 12px;
     background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
 }
 
 .openBtn:hover {
     background: var(--primary-color);
     color: #000;
 }
+
+.cardActions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+
 
 .empty {
     text-align: center;

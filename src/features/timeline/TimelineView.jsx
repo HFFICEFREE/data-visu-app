@@ -1,19 +1,64 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { getNotes } from '../../db/db';
 import { format } from 'date-fns';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import styles from './TimelineView.module.css';
 
 export function TimelineView() {
     const [notes, setNotes] = useState([]);
-    const [selectedId, setSelectedId] = useState(null);
-    const [sortType, setSortType] = useState('date'); // 'date' | 'title' | 'id'
-    const [sortOrder, setSortOrder] = useState('desc'); // 'asc' | 'desc'
+    const [selectedId, setSelectedId] = useState(() => localStorage.getItem('timeline_selectedId') || null);
+    const [sortType, setSortType] = useState(() => localStorage.getItem('timeline_sortType') || 'date'); // 'date' | 'title' | 'id'
+    const [sortOrder, setSortOrder] = useState(() => localStorage.getItem('timeline_sortOrder') || 'desc'); // 'asc' | 'desc'
     const navigate = useNavigate();
+    const containerRef = useRef(null);
+
+    const [hasRestoredScroll, setHasRestoredScroll] = useState(false);
+    const prevSelectedId = useRef(selectedId);
 
     useEffect(() => {
         loadData();
     }, []);
+
+    useEffect(() => {
+        if (!hasRestoredScroll && notes.length > 0 && containerRef.current) {
+            const savedScroll = localStorage.getItem('timeline_scrollTop');
+            if (savedScroll) {
+                containerRef.current.scrollTop = parseInt(savedScroll, 10);
+            }
+            setHasRestoredScroll(true);
+        }
+    }, [notes, hasRestoredScroll]);
+
+    const handleScroll = (e) => {
+        localStorage.setItem('timeline_scrollTop', e.target.scrollTop);
+    };
+
+    useEffect(() => {
+        if (selectedId) localStorage.setItem('timeline_selectedId', selectedId);
+        else localStorage.removeItem('timeline_selectedId');
+
+        if (prevSelectedId.current !== selectedId) {
+            if (selectedId === null) {
+                const globalScroll = localStorage.getItem('timeline_global_scrollTop');
+                if (globalScroll && containerRef.current) {
+                    setTimeout(() => {
+                        containerRef.current.scrollTop = parseInt(globalScroll, 10);
+                    }, 0);
+                }
+            } else if (prevSelectedId.current === null) {
+                if (containerRef.current) containerRef.current.scrollTop = 0;
+            }
+            prevSelectedId.current = selectedId;
+        }
+    }, [selectedId]);
+
+    useEffect(() => {
+        localStorage.setItem('timeline_sortType', sortType);
+    }, [sortType]);
+
+    useEffect(() => {
+        localStorage.setItem('timeline_sortOrder', sortOrder);
+    }, [sortOrder]);
 
     const loadData = async () => {
         const rawNotes = await getNotes();
@@ -49,7 +94,11 @@ export function TimelineView() {
     });
 
     return (
-        <div className={styles.container}>
+        <div
+            className={styles.container}
+            ref={containerRef}
+            onScroll={handleScroll}
+        >
             <div className={styles.headerRow}>
                 {selectedId && (
                     <button
@@ -85,11 +134,22 @@ export function TimelineView() {
 
             <div className={styles.timeline}>
                 {displayedNotes.map((note) => (
-                    <div
+                    <Link
                         key={note.id}
+                        to={`/note/${note.id}`}
                         className={`${styles.card} ${selectedId === note.id ? styles.selectedCard : ''}`}
                         style={{ borderLeftColor: note.color }}
-                        onClick={() => setSelectedId(note.id)}
+                        onClick={(e) => {
+                            if (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return;
+
+                            e.preventDefault();
+
+                            if (!selectedId && containerRef.current) {
+                                localStorage.setItem('timeline_global_scrollTop', containerRef.current.scrollTop);
+                            }
+
+                            setSelectedId(note.id);
+                        }}
                     >
                         <div className={styles.date}>
                             {note.createdAt ? format(new Date(note.createdAt), 'PPP p') : 'Unknown Date'}
@@ -107,16 +167,20 @@ export function TimelineView() {
                             {note.content?.substring(0, 100)}...
                         </div>
 
-                        <button
-                            className={styles.openBtn}
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                navigate(`/note/${note.id}`);
-                            }}
-                        >
-                            Open
-                        </button>
-                    </div>
+                        <div className={styles.cardActions}>
+                            <div
+                                className={styles.openBtn}
+                                role="button"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                    navigate(`/note/${note.id}`);
+                                }}
+                            >
+                                Open
+                            </div>
+                        </div>
+                    </Link>
                 ))}
                 {displayedNotes.length === 0 && <div className={styles.empty}>No related notes found.</div>}
             </div>
