@@ -164,7 +164,7 @@ export function TimelineView() {
                             </div>
                         )}
                         <div className={styles.preview}>
-                            {note.content?.substring(0, 100)}...
+                            {note.content?.replace(/<[^>]*>?/gm, '').substring(0, 100)}...
                         </div>
 
                         <div className={styles.cardActions}>

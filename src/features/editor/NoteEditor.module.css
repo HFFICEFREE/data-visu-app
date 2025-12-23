@@ -203,3 +203,165 @@
     color: #000;
     border-color: var(--primary-color) !important;
 }
+
+/* Tiptap Styles - Simple Template Look */
+.menuBar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #111; /* Darker background like the image */
+    border-bottom: 1px solid #333;
+    border-radius: 8px 8px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    flex-wrap: wrap;
+}
+
+.buttonGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.divider {
+    width: 1px;
+    height: 1.25rem;
+    background-color: #333;
+    margin: 0 0.5rem;
+}
+
+.menuBar button {
+    background: transparent;
+    border: none;
+    color: #888;
+    padding: 0.4rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.menuBar button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #eee;
+}
+
+.menuBar button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.menuBar button.isActive {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.tiptapEditor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0 0 8px 8px;
+    min-height: 500px;
+    cursor: text;
+}
+
+.tiptapEditor :global(.ProseMirror) {
+    flex: 1;
+    outline: none;
+    padding: 2rem 3rem;
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.tiptapEditor :global(.ProseMirror > * + *) {
+    margin-top: 0.75em;
+}
+
+.tiptapEditor :global(.ProseMirror ul),
+.tiptapEditor :global(.ProseMirror ol) {
+    padding: 0 1rem;
+    margin: 1.25rem 1rem 1.25rem 0.4rem;
+}
+
+.tiptapEditor :global(.ProseMirror ul li),
+.tiptapEditor :global(.ProseMirror ol li) {
+    margin-bottom: 0.25em;
+}
+
+.tiptapEditor :global(.ProseMirror h1),
+.tiptapEditor :global(.ProseMirror h2),
+.tiptapEditor :global(.ProseMirror h3),
+.tiptapEditor :global(.ProseMirror h4),
+.tiptapEditor :global(.ProseMirror h5),
+.tiptapEditor :global(.ProseMirror h6) {
+    line-height: 1.1;
+    margin-top: 2.5rem;
+    text-wrap: pretty;
+}
+
+.tiptapEditor :global(.ProseMirror h1),
+.tiptapEditor :global(.ProseMirror h2) {
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tiptapEditor :global(.ProseMirror h1) {
+    font-size: 2.25rem;
+    font-weight: 800;
+}
+
+.tiptapEditor :global(.ProseMirror h2) {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.tiptapEditor :global(.ProseMirror h3) {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.tiptapEditor :global(.ProseMirror code) {
+    background-color: rgba(97, 97, 97, 0.2);
+    padding: 0.25em 0.4em;
+    border-radius: 0.25rem;
+    font-family: 'JetBrainsMono', monospace;
+    font-size: 0.85em;
+}
+
+.tiptapEditor :global(.ProseMirror pre) {
+    background: #0d0d0d;
+    color: #fff;
+    font-family: 'JetBrainsMono', monospace;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.tiptapEditor :global(.ProseMirror pre code) {
+    color: inherit;
+    padding: 0;
+    background: none;
+    font-size: 0.9rem;
+}
+
+.tiptapEditor :global(.ProseMirror blockquote) {
+    border-left: 3px solid var(--primary-color);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+}
+
+.tiptapEditor :global(.ProseMirror hr) {
+    border: none;
+    border-top: 2px solid var(--surface-border);
+    margin: 2rem 0;
+}
